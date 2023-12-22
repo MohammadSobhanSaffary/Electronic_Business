@@ -1,58 +1,103 @@
-# Bank Reserves Model
+# مدل انتزاعی اقتصاد برای تعامل یک بانک با جامعه
+## توضیح پروژه
+این پروژه یک مدل اقتصادی ساده سازی شده است که از عواملی به نام افراد و یک بانک استفاده می‌کند. هدف این مدل شبیه‌سازی فرآیندهای اقتصادی است که افراد با یکدیگر تعامل داشته و از خدمات بانکی بهره می‌برند. دسته بندی افراد شامل قشر متوسط ، ثروتمند و فقیر میباشد که در ابتدا همه ی افراد جزو دسته قشر متوسط هستند، همچنین برای در نظر گرفتن اینکه آیا فرد جزو دسته ثروتمندان است یا خیر یک آستانه به عنوان ورودی از کاربر گرفته میشود.تعامل افراد باهم میتواند سبب معامله شودهمچنین تعامل هر فرد با بانک شامل سرمایه گذاری یا دریافت وام است که هرکدام دارای شرایط خاصی هستند.
 
-## Summary
+عملکرد اصلی مدل به شرح زیر است:
 
-A highly abstracted, simplified model of an economy, with only one type of agent and a single bank representing all banks in an economy. People (represented by circles) move randomly within the grid. If two or more people are on the same grid location, there is a 50% chance that they will trade with each other. If they trade, there is an equal chance of giving the other agent $5 or $2. A positive trade balance will be deposited in the bank as savings. If trading results in a negative balance, the agent will try to withdraw from its savings to cover the balance. If it does not have enough savings to cover the negative balance, it will take out a loan from the bank to cover the difference. The bank is required to keep a certain percentage of deposits as reserves. If run.py is used to run the model, then the percent of deposits the bank is required to retain is a user settable parameter. The amount the bank is able to loan at any given time is a function of the amount of deposits, its reserves, and its current total outstanding loan amount.
+• افراد (نماینده‌شان با دایره‌های رنگی) به صورت تصادفی در شبکه حرکت می‌کنند.
+• اگر دو یا چند نفر در یک مکان قرار گیرند، احتمال معامله با یکدیگر 50 درصد است.
+• اگر معامله صورت گیرد، احتمال برابری وجود دارد که یکی از آن‌ها به مبلغ 5 دلار یا 2 دلار از دیگری خرید کند.
+• معاملات مثبت به عنوان پس‌انداز در بانک واریز می‌شود و در صورت معامله منفی، فرد سعی می‌کند از پس‌انداز خود برای پرداخت مبلغ منفی استفاده کند. در صورت عدم توانایی در پرداخت مبلغ منفی، اقدام به گرفتن وام از بانک می‌کند.
+• بانک نیز موظف به نگه‌داشتن درصد مشخصی از سپرده‌ها به عنوان احتیاط است و توانایی وام‌دهی آن به میزان سپرده‌ها، احتیاطات و میزان وام‌های در جریان است.
 
-The model demonstrates the following Mesa features:
- - MultiGrid for creating shareable space for agents
- - DataCollector for collecting data on individual model runs
- - Slider for adjusting initial model parameters
- - ModularServer for visualization of agent interaction
- - Agent object inheritance
- - Using a BatchRunner to collect data on multiple combinations of model parameters
 
-## Installation
+## نیازمندی‌ها
+- Python 3.6 یا نسخه‌های جدیدتر
+- ‍`‍pip install -U -e git+https://githubcomprojectmesamesa-examples#egg=mesa-models‍‍‍‍‍‍‍`
+- نصب وابستگی‌ها با دستور `pip install -r requirements.txt`
 
-To install the dependencies use pip and the requirements.txt in this directory. e.g.
+## نحوه اجرا
+1. اجرای مدل: `mesa runserver`
+2. مشاهده رابط گرافیکی از طریق باز کردن مرورگر و وارد کردن آدرس `http://127.0.0.1:8521/`
 
-```
-    $ pip install -r requirements.txt
-```
+## اسناد رابط کاربری
 
-## Interactive Model Run
+- نمای کلی به همراه جدول حرکت رندوم افراد
+- نمودار آمار دسته بندی افراد در هر مرحله
+- تنظیمات اولیه
 
-To run the model interactively, use `mesa runserver` in this directory:
+## پارامترهای مدل
+- `init_people`: تعداد افراد اولیه در مدل
+- `rich_threshold`: حد سرمایه برای افراد ثروتمند
+- `reserve_percent`: درصد رزرو بانک
 
-```
-    $ mesa runserver
-```
+## دسته بندی افراد
 
-Then open your browser to [http://127.0.0.1:8521/](http://127.0.0.1:8521/), select the model parameters, press Reset, then Start.
+1. **افراد متوسط:** پس انداز آنها کمتر از ۱۰ است و مقدار وام آنها نیز کمتر از ۱۰ است.
 
-## Batch Run
+2. **افراد ثروتمند:** پس انداز آنها بیشتر از آستانه ثروتمند بودن است که کاربر وارد میکند.
 
-To run the model as a batch run to collect data on multiple combinations of model parameters, run "batch_run.py" in this directory.
+3. **افراد فقیر:** کسانی هستند که بدهکاری وامن آنها بیشتر از ۱۰ است.
 
-```
-    $ python batch_run.py
-```
-A progress status bar will display.
+## معاری پروژه
 
-To update the parameters to test other parameter sweeps, edit the list of parameters in the dictionary named "br_params" in "batch_run.py".
+- فایل `model.py`:
 
-## Files
+•معرفی:
+این فایل شامل تعریف کلاس ‍`BankReserves` است که مدل اقتصادی را پیاده‌سازی می‌کند.
 
-* ``bank_reserves/random_walker.py``: This defines a class that inherits from the Mesa Agent class. The main purpose is to provide a method for agents to move randomly one cell at a time.
-* ``bank_reserves/agents.py``: Defines the People and Bank classes.
-* ``bank_reserves/model.py``: Defines the Bank Reserves model and the DataCollector functions.
-* ``bank_reserves/server.py``: Sets up the interactive visualization server.
-* ``run.py``: Launches a model visualization server.
-* ``batch_run.py``: Basically the same as model.py, but includes a Mesa BatchRunner. The result of the batch run will be a .csv file with the data from every step of every run.
+ویژگی‌ها: •
+این فایل شامل تعریف افراد (`Person`)، بانک (`Bank`)، و توابع مربوط به جمع‌آوری داده‌ها و محاسبات مدل است.
+از `RandomWalker` به عنوان یک کلاس پایه برای افراد استفاده شده است که شامل توابع مرتبط با حرکت تصادفی در شبکه است.
+- فایل `server.py`:
 
-## Further Reading
+• معرفی:
+این فایل شامل کدی است که برای نمایش گرافیکی مدل استفاده می‌شود.
 
-This model is a Mesa implementation of the Bank Reserves model from NetLogo:
+• ویژگی‌ها:
+تعریف تابع `person_portrayal` برای نمایش و ویژگی‌های گرافیکی افراد در محیط شبیه‌سازی.
+تعریف پارامترهای قابل تنظیم توسط کاربر و تعیین ابزارهای گرافیکی نمایش داده.
+- فایل `random_walk.py`:
 
-Wilensky, U. (1998). NetLogo Bank Reserves model. http://ccl.northwestern.edu/netlogo/models/BankReserves. Center for Connected Learning and Computer-Based Modeling, Northwestern University, Evanston, IL.
+• معرفی:
+شامل تعریف کلاس `RandomWalker` است که ویژگی‌ها و توابع مرتبط با حرکت تصادفی را پیاده‌سازی می‌کند.
+
+- فایل `agents.py`:
+
+• معرفی:
+این فایل حاوی تعریف کلاس‌های `Person` و `Bank` است.
+
+• ویژگی‌ها:
+`Person` یک زیرکلاس از `RandomWalker` است و ویژگی‌ها و توابع مرتبط با تعاملات اقتصادی را پیاده‌سازی می‌کند.
+`Bank` نیز یک عامل با ویژگی‌ها و توابع مرتبط با عملکرد بانک در مدل است.
+
+
+## تحلیل و نتیجه‌گیری
+
+بر اساس تحلیل شرایط مختلف در مدل اقتصادی این پروژه، می‌توانیم به نتایج زیر دست یابیم:
+1. تعداد افراد:
+افزایش تعداد افراد ممکن است تأثیرات گسترده‌تری در تعاملات اقتصادی ایجاد کند. با افزایش تعداد افراد، تبادلات مالی و وابستگی‌های مالی بین افراد می‌تواند افزایش یابد.
+
+2. افراد ثروتمند و فقیر:
+تعیین حد سرمایه برای افراد ثروتمند و فقیر می‌تواند نقش مهمی در توزیع ثروت داشته باشد. به عنوان مثال، افراد با سرمایه بیشتر ممکن است قدرت بیشتری در تبادلات داشته باشند و یا افراد فقیرتر ممکن است نیاز به وام‌گیری از بانک داشته باشند.
+3. حد سرمایه افراد ثروتمند:
+تعیین حد سرمایه برای افراد ثروتمند می‌تواند تأثیر زیادی در تبادلات مالی و توزیع ثروت داشته باشد. افراد با سرمایه بیشتر ممکن است توانایی بیشتری در سرمایه‌گذاری، تجارت، و انجام معاملات بزرگتر داشته باشند.
+4. تأثیر بانک:
+تغییر در درصد رزرو بانک می‌تواند تأثیر مستقیمی در قابلیت بانک برای اعطای وام و مدیریت رزروها داشته باشد. این می‌تواند تعیین کننده برای تنظیمات مالی کل اقتصاد باشد.
+5. پارامترهای دیگر:
+تغییرات در سایر پارامترهای مانند درصد افرادی که می‌توانند وام بگیرند، میزان معاملات مالی، یا سایر ویژگی‌های مدل نیز می‌تواند تأثیرات قابل توجهی در دینامیک کلی مدل ایجاد کند.
+نتیجه‌گیری نهایی به ترکیبی از این تغییرات و پارامترهای مختلف بستگی دارد. انجام آزمایش‌ها و آنالیزهای متعدد با تغییرات در این پارامترها می‌تواند به درک بهتری از رفتار مدل منجر شود
+
+
+
+## توسعه دهندگان
+- [ محمد سبحان صفاری ]
+- [ سیما ضیایی ]
+
+## منابع
+- کد چارچوب Mesa: [لینک مخزن Mesa](https://github.com/projectmesa/mesa)
+- مدل اصلی توسط: Wilensky, U. (1998). NetLogo Bank Reserves model.
+
+---
+
 
