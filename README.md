@@ -23,8 +23,17 @@
 ## اسناد رابط کاربری
 
 - نمای کلی به همراه جدول حرکت رندوم افراد
+![Screenshot 2023-12-22 180814](https://github.com/MohammadSobhanSaffary/Electronic_Business/assets/96923486/c3b01887-27e5-492e-9e94-f541e4adf093)
+
 - نمودار آمار دسته بندی افراد در هر مرحله
+![Screenshot 2023-12-22 180848](https://github.com/MohammadSobhanSaffary/Electronic_Business/assets/96923486/23e67a30-47a0-4f8b-b227-51eea71ca99d)
+
 - تنظیمات اولیه
+![setup](https://github.com/MohammadSobhanSaffary/Electronic_Business/assets/96923486/42c8177f-7800-47a3-bc38-0550c8772fd6)
+
+-نرخ فریم بر ثانیه
+![speed](https://github.com/MohammadSobhanSaffary/Electronic_Business/assets/96923486/764e29e4-ed24-4365-85cd-3d7ff517b4a9)
+
 
 ## پارامترهای مدل
 - `init_people`: تعداد افراد اولیه در مدل
