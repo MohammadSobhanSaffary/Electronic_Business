@@ -35,7 +35,7 @@
 
 ![setup](https://github.com/MohammadSobhanSaffary/Electronic_Business/assets/96923486/42c8177f-7800-47a3-bc38-0550c8772fd6)
 
-###نرخ فریم بر ثانیه
+### نرخ فریم بر ثانیه
 
 ![speed](https://github.com/MohammadSobhanSaffary/Electronic_Business/assets/96923486/764e29e4-ed24-4365-85cd-3d7ff517b4a9)
 
