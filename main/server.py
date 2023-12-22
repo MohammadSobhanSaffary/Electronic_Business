@@ -1,6 +1,6 @@
 import mesa
-from bank_reserves.agents import Person
-from bank_reserves.model import BankReserves
+from main.agents import Person
+from main.model import BankReserves
 
 """
 Citation:

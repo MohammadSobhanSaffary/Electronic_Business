@@ -1,17 +1,5 @@
-"""
-The following code was adapted from the Bank Reserves model included in Netlogo
-Model information can be found at:
-http://ccl.northwestern.edu/netlogo/models/BankReserves
-Accessed on: November 2, 2017
-Author of NetLogo code:
-    Wilensky, U. (1998). NetLogo Bank Reserves model.
-    http://ccl.northwestern.edu/netlogo/models/BankReserves.
-    Center for Connected Learning and Computer-Based Modeling,
-    Northwestern University, Evanston, IL.
-"""
-
 import mesa
-from bank_reserves.random_walk import RandomWalker
+from main.random_walk import RandomWalker
 
 
 class Bank(mesa.Agent):

@@ -1,3 +1,3 @@
-from bank_reserves.server import server
+from main.server import server
 
 server.launch(open_browser=True)

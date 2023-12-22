@@ -1,23 +1,8 @@
-"""
-The following code was adapted from the Bank Reserves model included in Netlogo
-Model information can be found at:
-http://ccl.northwestern.edu/netlogo/models/BankReserves
-Accessed on: November 2, 2017
-Author of NetLogo code:
-    Wilensky, U. (1998). NetLogo Bank Reserves model.
-    http://ccl.northwestern.edu/netlogo/models/BankReserves.
-    Center for Connected Learning and Computer-Based Modeling,
-    Northwestern University, Evanston, IL.
-"""
-
 import mesa
 import numpy as np
-from bank_reserves.agents import Bank, Person
+from main.agents import Bank, Person
 
-"""
-If you want to perform a parameter sweep, call batch_run.py instead of run.py.
-For details see batch_run.py in the same directory as run.py.
-"""
+
 
 # Start of datacollector functions
 
@@ -81,20 +66,7 @@ def get_total_loans(model):
 
 class BankReserves(mesa.Model):
     """
-    This model is a Mesa implementation of the Bank Reserves model from NetLogo.
-    It is a highly abstracted, simplified model of an economy, with only one
-    type of agent and a single bank representing all banks in an economy. People
-    (represented by circles) move randomly within the grid. If two or more people
-    are on the same grid location, there is a 50% chance that they will trade with
-    each other. If they trade, there is an equal chance of giving the other agent
-    $5 or $2. A positive trade balance will be deposited in the bank as savings.
-    If trading results in a negative balance, the agent will try to withdraw from
-    its savings to cover the balance. If it does not have enough savings to cover
-    the negative balance, it will take out a loan from the bank to cover the
-    difference. The bank is required to keep a certain percentage of deposits as
-    reserves and the bank's ability to loan at any given time is a function of
-    the amount of deposits, its reserves, and its current total outstanding loan
-    amount.
+   salam
     """
 
     # grid height
