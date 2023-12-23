@@ -2,20 +2,12 @@ import mesa
 from main.agents import Person
 from main.model import BankReserves
 
-"""
-Citation:
-The following code was adapted from server.py at
-https://github.com/projectmesa/mesa/blob/main/examples/wolf_sheep/wolf_sheep/server.py
-Accessed on: November 2, 2017
-Author of original code: Taylor Mutch
-"""
+#set colors#
 
-# The colors here are taken from Matplotlib's tab10 palette
-# Green
 RICH_COLOR = "#2ca02c"
-# Red
+
 POOR_COLOR = "#d62728"
-# Blue
+
 MID_COLOR = "#1f77b4"
 
 
